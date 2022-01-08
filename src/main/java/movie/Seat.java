@@ -1,19 +1,19 @@
 package movie;
 
 class Seat {
-    private boolean isBooked;
+    private boolean booked;
 
-    public Seat(boolean isBooked) {
-        this.isBooked = isBooked;
+    public Seat(boolean booked) {
+        this.booked = booked;
     }
 
     public boolean isBooked() {
-        return isBooked;
+        return booked;
     }
 
     public void reserve() {
-        if (this.isBooked == false) {
-            this.isBooked = true;
+        if (isBooked() == false) {
+            this.booked = true;
             System.out.println("예매되었습니다");
             return;
         }
