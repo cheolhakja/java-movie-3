@@ -7,7 +7,7 @@ class MovieScheduleRepository {
         this.movieSchedule = movieSchedule;
     }
 
-    public void reserve(int row, int column) {
-        movieSchedule.reserve(row, column);
+    public boolean reserve(int row, int column) {
+        return movieSchedule.reserve(row, column);
     }
 }

@@ -12,8 +12,8 @@ class MovieSchedule {
         this.setSeats();
     }
 
-    public void reserve(int row, int column) {
-        seats[row][column].reserve();
+    public boolean reserve(int row, int column) {
+        return seats[row][column].reserve();
     }
 
     public void setSeats() {

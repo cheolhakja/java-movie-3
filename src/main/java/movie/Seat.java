@@ -11,13 +11,13 @@ class Seat {
         return booked;
     }
 
-    public void reserve() {
-        if (!isBooked()) {
-            this.booked = true;
-            System.out.println("예매되었습니다");
-            return;
+    public boolean reserve() {
+        if (isBooked()) {
+            throw new IllegalArgumentException();
         }
 
-        System.out.println("이미 예매된 좌석입니다");
+        this.booked = true;
+        System.out.println("예매되었습니다");
+        return true;
     }
 }
