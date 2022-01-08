@@ -12,7 +12,7 @@ class Seat {
     }
 
     public void reserve() {
-        if (isBooked() == false) {
+        if (!isBooked()) {
             this.booked = true;
             System.out.println("예매되었습니다");
             return;
