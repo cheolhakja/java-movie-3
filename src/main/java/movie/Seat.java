@@ -13,7 +13,7 @@ class Seat {
 
     public boolean reserve() {
         if (isBooked()) {
-            throw new IllegalArgumentException();
+            throw new CannotReserveException();
         }
 
         this.booked = true;
