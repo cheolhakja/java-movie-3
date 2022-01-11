@@ -1,6 +1,9 @@
 package movie;
 
 class Seat {
+
+    private Long row;
+    private Long column;
     private boolean booked;
 
     public Seat(boolean booked) {
