@@ -10,6 +10,20 @@ class Seat {
         this.booked = booked;
     }
 
+    public Long getRow() {
+        return row;
+    }
+
+    public Long getColumn() {
+        return column;
+    }
+
+    public Seat(Long row, Long column, boolean booked) {
+        this.row = row;
+        this.column = column;
+        this.booked = booked;
+    }
+
     public boolean isBooked() {
         return booked;
     }
