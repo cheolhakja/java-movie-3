@@ -2,23 +2,23 @@ package movie;
 
 class Seat {
 
-    private Long row;
-    private Long column;
+    private int row;
+    private int column;
     private boolean booked;
 
     public Seat(boolean booked) {
         this.booked = booked;
     }
 
-    public Long getRow() {
+    public int getRow() {
         return row;
     }
 
-    public Long getColumn() {
+    public int getColumn() {
         return column;
     }
 
-    public Seat(Long row, Long column, boolean booked) {
+    public Seat(int row, int column, boolean booked) {
         this.row = row;
         this.column = column;
         this.booked = booked;

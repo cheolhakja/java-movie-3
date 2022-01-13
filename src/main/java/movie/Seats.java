@@ -37,8 +37,8 @@ public class Seats {
 
     private void setSeats() {
         //initialize로 이름 수정
-        seats.add(new Seat(1L,1L,false));
-        seats.add(new Seat(1L,2L,false));
-        seats.add(new Seat(1L,3L,false));
+        seats.add(new Seat(1,1,false));
+        seats.add(new Seat(1,2,false));
+        seats.add(new Seat(1,3,false));
     }
 }
