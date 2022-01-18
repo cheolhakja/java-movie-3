@@ -10,4 +10,9 @@ class MovieScheduleRepository {
     public boolean reserve(int row, int column) {
         return movieSchedule.reserve(row, column);
     }
+
+    //---
+    public void printSeats() {
+        movieSchedule.printSeats();
+    }
 }

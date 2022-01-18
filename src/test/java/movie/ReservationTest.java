@@ -15,5 +15,7 @@ public class ReservationTest {
         Assertions.assertThatThrownBy(() -> {
             movieScheduleRepository.reserve(1, 1);
         }).isInstanceOf(CannotReserveException.class);
+
+        movieScheduleRepository.printSeats();
     }
 }

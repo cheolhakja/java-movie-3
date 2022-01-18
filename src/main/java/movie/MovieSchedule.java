@@ -14,4 +14,9 @@ class MovieSchedule {
     public boolean reserve(int row, int column) {
         return seats.reserve(row, column);
     }
+
+    //---
+    public void printSeats() {
+        seats.printSeats();
+    }
 }
