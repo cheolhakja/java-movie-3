@@ -1,44 +1,36 @@
 package movie;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.LinkedHashMap;
 
 public class Seats {
 
-    private ArrayList<Seat> seats = new ArrayList<>();
+    private Map<RowColumnPair, Seat> seats = new LinkedHashMap<RowColumnPair, Seat>();
 
     public Seats() {
-        this.setSeats();
+        this.initializeSeats();
     }
 
     public boolean isBooked(int row, int column) {
-        for (Seat seat: seats) {
-            if(seat.getRow() == row && seat.getColumn() == column) {
-                return seat.isBooked();
-            }
+        if (seats.containsKey(new RowColumnPair(row, column))) {
+            return seats.get(new RowColumnPair(row, column)).isBooked();
         }
 
-        throw new IllegalArgumentException(); //need refactor
+        return false;
     }
 
     public boolean reserve(int row, int column) {
-        int seatIndex = 0;
-
-        for (Seat seat: seats) {
-            if(seat.getRow() == row && seat.getColumn() == column && seat.isBooked() == false) {
-                seats.set(seatIndex, new Seat(seat.getRow(), seat.getColumn(), true));
-                return true;
-            }
-
-            seatIndex++;
+        if (seats.containsKey(new RowColumnPair(row, column)) && !isBooked(row, column)) {
+            seats.replace(new RowColumnPair(row, column), new Seat(row, column, true));
+            return true;
         }
 
         throw new CannotReserveException();
     }
 
-    private void setSeats() {
-        //initialize로 이름 수정
-        seats.add(new Seat(1,1,false));
-        seats.add(new Seat(1,2,false));
-        seats.add(new Seat(1,3,false));
+    private void initializeSeats() {
+        seats.put(new RowColumnPair(1, 1), new Seat(1, 1, false));
+        seats.put(new RowColumnPair(1, 2), new Seat(1, 2, false));
+        seats.put(new RowColumnPair(1, 3), new Seat(1, 3, false));
     }
 }
