@@ -5,15 +5,15 @@ public class MovieReservationController {
     public void run() {
         Input input = new HardcodingInput();
         int menu = input.inputMenu();
-        MovieScheduleRepository movieScheduleRepository = new MovieScheduleRepository();
-        movieScheduleRepository.addSchedule(new MovieSchedule(new Movie(1L), 11));
+        MovieReservationService movieReservationService = new MovieReservationService();
+        movieReservationService.addSchedule(new MovieSchedule(new Movie(1L), 11));
 
         switch (menu) {
             case 1:
-                movieScheduleRepository.printSeats();
+                movieReservationService.printSeats();
                 int row = input.inputRow();
                 int column = input.inputColumn();
-                movieScheduleRepository.reserve(row, column);
+                movieReservationService.reserve(row, column);
                 break;
             case 2:
                 System.out.println("2");
