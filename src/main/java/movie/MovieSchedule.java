@@ -7,12 +7,10 @@ import java.util.Set;
 
 class MovieSchedule {
     private Movie movie;
-    private int startTime;
     private Map<RowColumnPair, Seat> seats = new LinkedHashMap<>();
 
-    public MovieSchedule(Movie movie, int startTime) {
+    public MovieSchedule(Movie movie) {
         this.movie = movie;
-        this.startTime = startTime;
         this.initializeSeats();
     }
 

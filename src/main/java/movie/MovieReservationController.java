@@ -6,7 +6,7 @@ public class MovieReservationController {
         Input input = new HardcodingInput();
         int menu = input.inputMenu();
         MovieReservationService movieReservationService = new MovieReservationService();
-        movieReservationService.addSchedule(new MovieSchedule(new Movie(1L), 11));
+        movieReservationService.addSchedule(new MovieSchedule(new Movie(1L)));
 
         switch (menu) {
             case 1:
