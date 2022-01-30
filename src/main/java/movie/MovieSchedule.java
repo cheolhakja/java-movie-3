@@ -100,4 +100,10 @@ class MovieSchedule {
             seat = seatNext;
         }
     }
+
+    //---
+    public Seat getSeat(int row, int column) {
+        return seats.get(new RowColumnPair(row, column));
+        //need refactor: exception handling
+    }
 }

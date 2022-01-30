@@ -18,6 +18,10 @@ class Seat {
         return column;
     }
 
+    public void setBooked(boolean booked) {
+        this.booked = booked;
+    }
+
     public Seat(int row, int column, boolean booked) {
         this.row = row;
         this.column = column;
@@ -26,15 +30,5 @@ class Seat {
 
     public boolean isBooked() {
         return booked;
-    }
-
-    public boolean reserve() {
-        if (isBooked()) {
-            throw new CannotReserveException();
-        }
-
-        this.booked = true;
-        System.out.println("예매되었습니다");
-        return true;
     }
 }
