@@ -20,23 +20,6 @@ class MovieSchedule {
         seats.put(new RowColumnPair(1, 3), new Seat(1, 3, false));
     }
 
-    public boolean isReserved(int row, int column) {
-        if (seats.containsKey(new RowColumnPair(row, column))) {
-            return seats.get(new RowColumnPair(row, column)).isBooked();
-        }
-
-        return false; //이부분 고쳐야겠다.
-    }
-
-    public boolean reserve(int row, int column) {
-        if (seats.containsKey(new RowColumnPair(row, column)) && !isReserved(row, column)) {
-            seats.replace(new RowColumnPair(row, column), new Seat(row, column, true));
-            return true;
-        }
-
-        throw new CannotReserveException(); //컴파일 완료
-    }
-
     //---
     public void printSeats() {
         Seat seat = new Seat(100, 100, false); //가짜값
