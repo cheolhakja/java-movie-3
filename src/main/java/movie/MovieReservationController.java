@@ -3,23 +3,26 @@ package movie;
 public class MovieReservationController {
 
     public void run() {
-        Input input = new HardcodingInput();
-        int menu = input.inputMenu();
-        MovieReservationService movieReservationService = new MovieReservationService();
+        Input input = new ConsoleInput();
+        MovieReservationServiceInterface movieReservationService = new MovieReservationServiceImpl();
+
         movieReservationService.addSchedule(new MovieSchedule(new Movie(1L)));
 
-        switch (menu) {
-            case 1:
-                movieReservationService.printSeats();
-                int row = input.inputRow();
-                int column = input.inputColumn();
-                movieReservationService.reserve(row, column);
-                break;
-            case 2:
-                System.out.println("2");
-                break;
-            default:
-                System.out.println("d");
+        while(true) {
+            int menu = input.inputMenu();
+            switch (menu) {
+                case 1:
+                    int row = input.inputRow();
+                    int column = input.inputColumn();
+                    movieReservationService.reserve(row, column);
+                    System.out.println("예매되었습니다");
+                    break;
+                case 2:
+                    System.out.println("2");
+                    break;
+                default:
+                    throw new IllegalArgumentException(); //나올 수 없는 메뉴 입력값
+            }
         }
     }
 }
