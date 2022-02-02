@@ -85,8 +85,8 @@ class MovieSchedule {
     }
 
     //---
-    public Seat getSeat(int row, int column) {
-        return seats.get(new RowColumnPair(row, column));
-        //need refactor: exception handling
+    public Map getAllSeats() {
+        //handle NullPointException?
+        return seats;
     }
 }

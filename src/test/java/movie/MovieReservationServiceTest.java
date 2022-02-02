@@ -14,8 +14,6 @@ public class MovieReservationServiceTest {
         movieReservationService.addSchedule(new MovieSchedule(new Movie(1L)));
 
         assertThat(movieReservationService.reserve(1, 1)).isTrue();
-        assertThatThrownBy(() -> {
-            movieReservationService.reserve(1, 1);
-        }).isInstanceOf(CannotReserveException.class);
+        assertThat(movieReservationService.reserve(1, 1)).isFalse();
     }
 }
