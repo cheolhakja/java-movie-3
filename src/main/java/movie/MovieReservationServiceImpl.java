@@ -6,23 +6,23 @@ public class MovieReservationServiceImpl implements MovieReservationServiceInter
 
     @Override
     public boolean reserve(int row, int column) {
-        MovieSchedule movieSchedule = movieScheduleRepository.findSchedule();
-        Seat seat = movieSchedule.getSeat(row, column);
+        try {
+            //need add: row and column validator (not in controller)
+            MovieSchedule movieSchedule = movieScheduleRepository.findSchedule();
+            Seat seat = movieSchedule.findSeat(row, column);
 
-        if(seat.isBooked()) {
-            throw new CannotReserveException();
+            SeatNullChecker.check(seat);
+            seat.reserved();
+
+            movieScheduleRepository.saveSchedule(movieSchedule); //이 줄을 실행할 때 생기는 에러중에는 서비스 계층으로 throw 할 것이 있고 아닌 것이 있다. ex) SQLException
+
+            System.out.println("예매되었습니다");
+            return true;
+        } catch(CannotReserveException e) {
+            System.out.println("예매 불가능합니다");
+            return false;
+            //다시 메뉴 입력으로 되돌아가기
         }
-
-        seat.setBooked(true);
-        movieScheduleRepository.saveSchedule(movieSchedule);
-        return true;
-        /*
-        MovieSchedule클래스는 그냥 상태를 바꾸는 역할만 수행하는것이다.
-        Repository를 통해서 저장하는 것이 좋을 것 같다
-        try - catch - finally
-        지금 당장 할 수 있는 작은 일을 하고 테스트 해보자.
-
-         */
     }
 
     @Override

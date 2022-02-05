@@ -1,9 +1,7 @@
 package movie;
 
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 class MovieSchedule {
     private Movie movie;
@@ -20,73 +18,7 @@ class MovieSchedule {
         seats.put(new RowColumnPair(1, 3), new Seat(1, 3, false));
     }
 
-    //---
-    public void printSeats() {
-        Seat seat = new Seat(100, 100, false); //가짜값
-        Set<Map.Entry<RowColumnPair, Seat>> entries = seats.entrySet();
-        Iterator iterator = entries.iterator();
-        int count = 1;
-
-        while (iterator.hasNext()) {
-            if (count == 1) {
-                count++;
-                seat = ((Map.Entry<RowColumnPair, Seat>) iterator.next()).getValue(); //이게 되나? 하나도 없으면?
-                System.out.print(seat.getRow() + "행 : ");
-                for (int i = 0; i < seat.getColumn() - 1; i++) {
-                    System.out.print(" ");
-                }
-
-                if (seat.isBooked()) {
-                    System.out.print("x");
-                    continue;
-                }
-
-                System.out.print("o");
-            }
-
-            Seat seatNext = ((Map.Entry<RowColumnPair, Seat>) iterator.next()).getValue();
-
-            if (seat.getRow() != seatNext.getRow()) {
-                //행이 바뀐경우
-                //개행하고 행 정보 출력
-                //n 출력
-                // o x 출력
-                //seat에 대입
-                System.out.println();
-                System.out.print(seatNext.getRow() + "행 : ");
-                for (int i = 0; i < seatNext.getColumn() - 1; i++) {
-                    System.out.print(" ");
-                }
-
-                if (seatNext.isBooked()) {
-                    System.out.print("x");
-                    seat = seatNext;
-                    continue;
-                }
-
-                System.out.print("o");
-                seat = seatNext;
-                continue;
-            }
-
-            for (int i = 0; i < seatNext.getColumn() - seat.getColumn() - 1; i++) {
-                System.out.print(" ");
-            }
-
-            if (seatNext.isBooked()) {
-                System.out.print("x");
-                seat = seatNext;
-                continue;
-            }
-
-            System.out.print("o");
-            seat = seatNext;
-        }
-    }
-
-    //---
-    public Seat getSeat(int row, int column) {
-        return seats.get(new RowColumnPair(row, column));
-        //need refactor: exception handling
+    public Seat findSeat(int row, int column) {
+        return seats.get(new RowColumnPair(row, column)); //Wrapper type인데 (참조로)null을 반환하는 것이 되겠지?
     }
 }

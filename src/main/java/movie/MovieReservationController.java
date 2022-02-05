@@ -15,7 +15,6 @@ public class MovieReservationController {
                     int row = input.inputRow();
                     int column = input.inputColumn();
                     movieReservationService.reserve(row, column);
-                    System.out.println("예매되었습니다");
                     break;
                 case 2:
                     System.out.println("2");

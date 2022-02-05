@@ -12,5 +12,6 @@ public class MovieScheduleRepositoryImpl implements MovieScheduleRepositoryInter
     @Override
     public MovieSchedule findSchedule() {
         return this.movieSchedule;
+        //need refactor: NullPointerException handling
     }
 }

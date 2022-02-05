@@ -4,31 +4,27 @@ class Seat {
 
     private int row;
     private int column;
-    private boolean booked;
+    private boolean reserveStatus;
 
-    public Seat(boolean booked) {
-        this.booked = booked;
+    public Seat(boolean reserveStatus) {
+        this.reserveStatus = reserveStatus;
     }
 
-    public int getRow() {
-        return row;
-    }
-
-    public int getColumn() {
-        return column;
-    }
-
-    public void setBooked(boolean booked) {
-        this.booked = booked;
-    }
-
-    public Seat(int row, int column, boolean booked) {
+    public Seat(int row, int column, boolean reserveStatus) {
         this.row = row;
         this.column = column;
-        this.booked = booked;
+        this.reserveStatus = reserveStatus;
     }
 
-    public boolean isBooked() {
-        return booked;
+    public void reserved() {
+        checkIfSeatIsReserved();
+
+        this.reserveStatus = true;
+    }
+
+    private void checkIfSeatIsReserved() { //단일 책임 이슈?
+        if(reserveStatus == true) {
+            throw new CannotReserveException();
+        }
     }
 }
