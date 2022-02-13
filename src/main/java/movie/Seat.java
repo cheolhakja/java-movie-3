@@ -10,10 +10,10 @@ class Seat {
         this.reserveStatus = reserveStatus;
     }
 
-    public Seat(int row, int column, boolean reserveStatus) {
+    public Seat(int row, int column) {
         this.row = row;
         this.column = column;
-        this.reserveStatus = reserveStatus;
+        this.reserveStatus = false;
     }
 
     public void reserved() {
