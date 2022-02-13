@@ -10,7 +10,7 @@ public class SeatNullChecker {
 
     public static void check(Seat seat) {
         if(seat == null) {
-            throw new CannotReserveException();
+            throw new CannotFindSeatException();
         }
     }
 }
