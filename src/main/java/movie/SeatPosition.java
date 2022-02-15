@@ -23,4 +23,8 @@ public enum SeatPosition {
 
         throw new CannotFindSeatException();
     }
+
+    public int getRow() {
+        return row;
+    }
 }

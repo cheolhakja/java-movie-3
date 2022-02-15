@@ -15,6 +15,13 @@ class MovieSchedule {
         this.initializeEnumSeats();
     }
 
+    public MovieSchedule(Movie movie, SeatPosition... seatPositions) {
+        this.movie = movie;
+        for (SeatPosition seatPosition : seatPositions) {
+            enumSeats.put(seatPosition, new Seat(seatPosition));
+        }
+    }
+
     private void initializeSeats() {
         seats.put(new RowColumnPair(1, 1), new Seat(1, 1));
         seats.put(new RowColumnPair(1, 2), new Seat(1, 2));
@@ -22,9 +29,9 @@ class MovieSchedule {
     }
 
     private void initializeEnumSeats() {
-        enumSeats.put(SeatPosition.A1, new Seat(1,1));
-        enumSeats.put(SeatPosition.A2, new Seat(1,2));
-        enumSeats.put(SeatPosition.A3, new Seat(1,3));
+        enumSeats.put(SeatPosition.A1, new Seat(1, 1));
+        enumSeats.put(SeatPosition.A2, new Seat(1, 2));
+        enumSeats.put(SeatPosition.A3, new Seat(1, 3));
     }
 
     public Seat findSeat(int row, int column) {
@@ -38,5 +45,19 @@ class MovieSchedule {
         SeatNullChecker.check(seat);
 
         seat.reserved();
+    }
+
+    public void printSeats() {
+        int previousSeatRow = 1;
+        int row;
+
+        for (Map.Entry<SeatPosition, Seat> seat : enumSeats.entrySet()) {
+            if ((row = seat.getKey().getRow()) > previousSeatRow){ //한 줄에 점 두개. 메세지를 보내기
+                System.out.println();
+                previousSeatRow = row;
+            }
+
+            seat.getValue().printSeat();
+        }
     }
 }

@@ -1,6 +1,6 @@
 package movie;
 
-public class EnumMovieService implements MovieReservationServiceInterface {
+public class EnumMovieReservationService implements MovieReservationServiceInterface {
 
     private MovieScheduleRepositoryInterface movieScheduleRepository = new MovieScheduleRepositoryImpl();
 
@@ -26,6 +26,8 @@ public class EnumMovieService implements MovieReservationServiceInterface {
 
     @Override
     public void printSeats() {
-        //repository에서 findAll등의 메서드만 가져야한다.
+        MovieSchedule movieSchedule = movieScheduleRepository.findSchedule();
+
+        movieSchedule.printSeats();
     }
 }
