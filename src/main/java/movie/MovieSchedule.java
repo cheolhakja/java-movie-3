@@ -22,6 +22,17 @@ class MovieSchedule {
         }
     }
 
+    public MovieSchedule(Movie movie, RowColumnPair... rowColumnPairs) {
+        Long id = 0L;
+
+        this.movie = movie;
+
+        for (RowColumnPair rowColumnPair : rowColumnPairs) {
+            id = id + 1L;
+            seats.put(rowColumnPair, new Seat(id, rowColumnPair));
+        }
+    }
+
     private void initializeSeats() {
         seats.put(new RowColumnPair(1, 1), new Seat(1, 1));
         seats.put(new RowColumnPair(1, 2), new Seat(1, 2));
@@ -38,13 +49,12 @@ class MovieSchedule {
         return seats.get(new RowColumnPair(row, column)); //Wrapper type인데 (참조로)null을 반환하는 것이 되겠지?
     }
 
-    public void reserve(int row, int column) throws CannotFindSeatException {
-        SeatPosition seatPosition = SeatPosition.findSeatPositionByRowColumn(row, column);
-        Seat seat = enumSeats.get(seatPosition);
+    public boolean reserve(int row, int column) throws CannotFindSeatException {
+        Seat seat = seats.get(new RowColumnPair(row, column));
 
-        SeatNullChecker.check(seat);
+        SeatNullChecker.check(seat); //need refactor: seat-existence-checker
 
-        seat.reserved();
+        return seat.reserved();
     }
 
     public void printSeats() {
@@ -52,7 +62,7 @@ class MovieSchedule {
         int row;
 
         for (Map.Entry<SeatPosition, Seat> seat : enumSeats.entrySet()) {
-            if ((row = seat.getKey().getRow()) > previousSeatRow){ //한 줄에 점 두개. 메세지를 보내기
+            if ((row = seat.getKey().getRow()) > previousSeatRow) { //한 줄에 점 두개. 메세지를 보내기
                 System.out.println();
                 previousSeatRow = row;
             }

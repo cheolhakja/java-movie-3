@@ -2,16 +2,16 @@ package movie;
 
 public class MovieScheduleRepositoryImpl implements MovieScheduleRepositoryInterface {
 
-    private MovieSchedule movieSchedule;
+    private static MovieSchedule movieSchedules;
 
     @Override
     public void saveSchedule(MovieSchedule movieSchedule) {
-        this.movieSchedule = movieSchedule;
+        movieSchedules = movieSchedule;
     }
 
     @Override
     public MovieSchedule findSchedule() {
-        return this.movieSchedule;
+        return movieSchedules;
         //need refactor: NullPointerException handling
     }
 }

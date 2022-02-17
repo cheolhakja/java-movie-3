@@ -6,6 +6,8 @@ class Seat {
     private int column;
     private boolean reserveStatus;
     private SeatPosition seatPosition;
+    private Long id;
+    private RowColumnPair rowColumnPair;
 
     public Seat(boolean reserveStatus) {
         this.reserveStatus = reserveStatus;
@@ -21,10 +23,15 @@ class Seat {
         this.seatPosition = seatPosition;
     }
 
-    public void reserved() {
+    public Seat(Long id, RowColumnPair rowColumnPair) {
+        this.id = id;
+        this.rowColumnPair = rowColumnPair;
+    }
+
+    public boolean reserved() {
         checkIfSeatIsReserved();
 
-        this.reserveStatus = true;
+        return reserveStatus = true;
     }
 
     private void checkIfSeatIsReserved() { //단일 책임 이슈?
