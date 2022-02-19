@@ -2,26 +2,9 @@ package movie;
 
 class Seat {
 
-    private int row;
-    private int column;
-    private boolean reserveStatus;
-    private SeatPosition seatPosition;
     private Long id;
+    private boolean reserveStatus; //need refactor: to enum
     private RowColumnPair rowColumnPair;
-
-    public Seat(boolean reserveStatus) {
-        this.reserveStatus = reserveStatus;
-    }
-
-    public Seat(int row, int column) {
-        this.row = row;
-        this.column = column;
-        this.reserveStatus = false;
-    }
-
-    public Seat(SeatPosition seatPosition) {
-        this.seatPosition = seatPosition;
-    }
 
     public Seat(Long id, RowColumnPair rowColumnPair) {
         this.id = id;
@@ -34,7 +17,7 @@ class Seat {
         return reserveStatus = true;
     }
 
-    private void checkIfSeatIsReserved() { //단일 책임 이슈?
+    private void checkIfSeatIsReserved() { //검증의 책임을 가져도 되는가?
         if(reserveStatus == true) {
             throw new CannotReserveException();
         }
@@ -42,10 +25,10 @@ class Seat {
 
     public void printSeat() {
         if(reserveStatus == true) {
-            System.out.println(row + "행" + column + "열" + "o ");
+            System.out.print(rowColumnPair.getRow() + "행" + rowColumnPair.getColumn() + "열" + "o ");
             return;
         }
 
-        System.out.println(row + "행" + column + "열" + "x ");
+        System.out.print(rowColumnPair.getRow() + "행" + rowColumnPair.getColumn() + "열" + "x ");
     }
 }
