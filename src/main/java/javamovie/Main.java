@@ -1,4 +1,6 @@
-package movie;
+package javamovie;
+
+import javamovie.controller.MovieReservationController;
 
 public class Main {
 

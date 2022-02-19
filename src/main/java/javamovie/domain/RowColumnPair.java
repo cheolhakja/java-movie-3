@@ -1,4 +1,4 @@
-package movie;
+package javamovie.domain;
 
 import java.util.Objects;
 

@@ -1,4 +1,6 @@
-package movie;
+package javamovie.domain;
+
+import javamovie.exception.CannotFindSeatException;
 
 public class SeatExistenceChecker {
     /*

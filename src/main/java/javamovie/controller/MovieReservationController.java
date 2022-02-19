@@ -1,4 +1,12 @@
-package movie;
+package javamovie.controller;
+
+import javamovie.domain.Movie;
+import javamovie.domain.MovieSchedule;
+import javamovie.domain.RowColumnPair;
+import javamovie.service.MovieReservationService;
+import javamovie.service.MovieReservationServiceImpl;
+import javamovie.view.ConsoleInput;
+import javamovie.view.Input;
 
 public class MovieReservationController {
 

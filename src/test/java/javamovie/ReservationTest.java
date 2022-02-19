@@ -1,5 +1,10 @@
-package movie;
+package javamovie;
 
+import javamovie.domain.RowColumnPair;
+import javamovie.exception.CannotFindSeatException;
+import javamovie.exception.CannotReserveException;
+import javamovie.domain.Movie;
+import javamovie.domain.MovieSchedule;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

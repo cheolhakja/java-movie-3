@@ -1,4 +1,6 @@
-package movie;
+package javamovie.repository;
+
+import javamovie.domain.MovieSchedule;
 
 public interface MovieScheduleRepository {
 

@@ -1,4 +1,10 @@
-package movie;
+package javamovie.service;
+
+import javamovie.domain.MovieSchedule;
+import javamovie.repository.MovieScheduleRepository;
+import javamovie.repository.MovieScheduleRepositoryImpl;
+import javamovie.exception.CannotFindSeatException;
+import javamovie.exception.CannotReserveException;
 
 public class MovieReservationServiceImpl implements MovieReservationService {
 

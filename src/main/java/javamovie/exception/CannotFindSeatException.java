@@ -1,4 +1,4 @@
-package movie;
+package javamovie.exception;
 
 public class CannotFindSeatException extends IllegalArgumentException {
 

@@ -1,6 +1,8 @@
-package movie;
+package javamovie.domain;
 
-class Seat {
+import javamovie.exception.CannotReserveException;
+
+public class Seat {
 
     private Long id;
     private boolean reserveStatus; //need refactor: to enum

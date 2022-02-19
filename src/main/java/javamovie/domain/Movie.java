@@ -1,6 +1,6 @@
-package movie;
+package javamovie.domain;
 
-class Movie {
+public class Movie {
     private Long id;
 
     public Movie(Long id) {

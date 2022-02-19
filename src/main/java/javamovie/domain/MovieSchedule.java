@@ -1,9 +1,11 @@
-package movie;
+package javamovie.domain;
+
+import javamovie.exception.CannotFindSeatException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-class MovieSchedule {
+public class MovieSchedule {
 
     private Movie movie;
     private Map<RowColumnPair, Seat> seats = new LinkedHashMap<>();
