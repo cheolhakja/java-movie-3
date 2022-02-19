@@ -1,27 +1,24 @@
 package movie;
 
-public class MovieReservationServiceImpl implements MovieReservationServiceInterface {
+public class MovieReservationServiceImpl implements MovieReservationService {
 
-    private final MovieScheduleRepositoryInterface movieScheduleRepository = new MovieScheduleRepositoryImpl(); //바뀌면 안된다..
+    private MovieScheduleRepository movieScheduleRepository = new MovieScheduleRepositoryImpl();
 
     @Override
     public boolean reserve(int row, int column) {
         try {
-            //need add: row and column validator (not in controller)
-            MovieSchedule movieSchedule = movieScheduleRepository.findSchedule();
-            Seat seat = movieSchedule.findSeat(row, column);
+            MovieSchedule movieSchedule = movieScheduleRepository.findSchedule(); //한줄에 점을 두개 이상 찍지 않는다
 
-            SeatNullChecker.check(seat);
-            seat.reserved();
-
-            movieScheduleRepository.saveSchedule(movieSchedule); //이 줄을 실행할 때 생기는 에러중에는 서비스 계층으로 throw 할 것이 있고 아닌 것이 있다. ex) SQLException
-
+            movieSchedule.reserve(row, column);
             System.out.println("예매되었습니다");
+
             return true;
-        } catch(CannotReserveException e) {
-            System.out.println("예매 불가능합니다");
+        } catch (CannotReserveException e) {
+            System.out.println("이미 예매 된 좌석입니다");
             return false;
-            //다시 메뉴 입력으로 되돌아가기
+        } catch (CannotFindSeatException e) {
+            System.out.println("존재하지 않는 좌석입니다");
+            return false;
         }
     }
 
@@ -32,6 +29,8 @@ public class MovieReservationServiceImpl implements MovieReservationServiceInter
 
     @Override
     public void printSeats() {
-        //repository에서 findAll등의 메서드만 가져야한다.
+        MovieSchedule movieSchedule = movieScheduleRepository.findSchedule();
+
+        movieSchedule.printSeats();
     }
 }

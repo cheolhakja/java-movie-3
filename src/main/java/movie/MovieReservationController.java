@@ -4,7 +4,7 @@ public class MovieReservationController {
 
     public void run() {
         Input input = new ConsoleInput();
-        MovieReservationServiceInterface movieReservationService = new HashMovieReservationService();
+        MovieReservationService movieReservationService = new MovieReservationServiceImpl();
 
         RowColumnPair A1 = new RowColumnPair(1, 1);
         RowColumnPair A2 = new RowColumnPair(1, 2);
@@ -15,12 +15,13 @@ public class MovieReservationController {
         RowColumnPair B3 = new RowColumnPair(2, 3);
         RowColumnPair C2 = new RowColumnPair(3, 2);
         movieReservationService.addSchedule(new MovieSchedule(new Movie(1L),
-                A1, A2, A3, A4, B1, B2, B3, C2));
+                A1, A2, A3, A4, B1, B2, B3, C2)); //객체들을 생성하는 책임을 main이 갖고 객체를 주입받을까?
 
         while(true) {
             int menu = input.inputMenu();
             switch (menu) {
                 case 1:
+                    movieReservationService.printSeats();
                     int row = input.inputRow();
                     int column = input.inputColumn();
                     movieReservationService.reserve(row, column);

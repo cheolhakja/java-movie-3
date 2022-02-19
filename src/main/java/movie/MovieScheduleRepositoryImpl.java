@@ -1,6 +1,6 @@
 package movie;
 
-public class MovieScheduleRepositoryImpl implements MovieScheduleRepositoryInterface {
+public class MovieScheduleRepositoryImpl implements MovieScheduleRepository {
 
     private static MovieSchedule movieSchedules;
 

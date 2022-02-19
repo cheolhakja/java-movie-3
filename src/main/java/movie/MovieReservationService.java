@@ -1,6 +1,6 @@
 package movie;
 
-public interface MovieReservationServiceInterface {
+public interface MovieReservationService {
 
     public boolean reserve(int row, int column);
 

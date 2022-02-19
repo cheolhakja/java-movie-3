@@ -1,6 +1,6 @@
 package movie;
 
-public interface MovieScheduleRepositoryInterface {
+public interface MovieScheduleRepository {
 
     public void saveSchedule(MovieSchedule movieSchedule);
 
