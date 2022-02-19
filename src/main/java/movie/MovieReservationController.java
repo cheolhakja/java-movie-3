@@ -27,7 +27,7 @@ public class MovieReservationController {
                     movieReservationService.reserve(row, column);
                     break;
                 case 2:
-                    System.out.println("2");
+                    System.out.println("2"); //feat: 예매 취소 기능 구현
                     break;
                 default:
                     throw new IllegalArgumentException(); //나올 수 없는 메뉴 입력값
