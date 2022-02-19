@@ -10,7 +10,7 @@ public class ConsoleInput implements Input {
     public int inputMenu() {
         try {
             System.out.println("메뉴를 입력하세요");
-            return Integer.parseInt(scanner.nextLine().trim()); //Validator가 필요하다. 메뉴는 1과 2만 입력받을 수 있음.
+            return Integer.parseInt(scanner.nextLine().trim()); //Checker가 필요하다. 메뉴는 1과 2만 입력받을 수 있음.
         } catch(IllegalArgumentException e) {
             System.out.println("올바르지 않은 입력입니다");
             return inputMenu();

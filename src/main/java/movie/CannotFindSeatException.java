@@ -7,6 +7,4 @@ public class CannotFindSeatException extends IllegalArgumentException {
     public CannotFindSeatException() {
         super(CANNOT_FIND_SEAT_MESSAGE);
     }
-
-    //add exception to better distinguish exception
 }
