@@ -1,7 +1,7 @@
-package javamovie.domain;
+package javamovie.movie.domain;
 
-import javamovie.exception.CannotFindSeatException;
-import javamovie.exception.CannotReserveException;
+import javamovie.movie.exception.CannotFindSeatException;
+import javamovie.movie.exception.CannotReserveException;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

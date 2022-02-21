@@ -1,6 +1,6 @@
-package javamovie.domain;
+package javamovie.movie.domain;
 
-import javamovie.exception.CannotReserveException;
+import javamovie.movie.exception.CannotReserveException;
 
 public class Seat {
 

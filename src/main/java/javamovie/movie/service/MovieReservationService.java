@@ -1,6 +1,6 @@
-package javamovie.service;
+package javamovie.movie.service;
 
-import javamovie.domain.MovieSchedule;
+import javamovie.movie.domain.MovieSchedule;
 
 public interface MovieReservationService {
 

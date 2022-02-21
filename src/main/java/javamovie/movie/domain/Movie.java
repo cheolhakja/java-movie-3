@@ -1,4 +1,4 @@
-package javamovie.domain;
+package javamovie.movie.domain;
 
 public class Movie {
     private Long id;

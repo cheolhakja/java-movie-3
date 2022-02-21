@@ -1,10 +1,10 @@
 package javamovie.controller;
 
-import javamovie.domain.Movie;
-import javamovie.domain.MovieSchedule;
-import javamovie.domain.RowColumnPair;
-import javamovie.service.MovieReservationService;
-import javamovie.service.MovieReservationServiceImpl;
+import javamovie.movie.domain.Movie;
+import javamovie.movie.domain.MovieSchedule;
+import javamovie.movie.domain.RowColumnPair;
+import javamovie.movie.service.MovieReservationService;
+import javamovie.movie.service.MovieReservationServiceImpl;
 import javamovie.view.ConsoleInput;
 import javamovie.view.Input;
 

@@ -1,7 +1,5 @@
-package javamovie.repository;
+package javamovie.movie.domain;
 
-import javamovie.domain.Movie;
-import javamovie.domain.MovieSchedule;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

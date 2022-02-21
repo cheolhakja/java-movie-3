@@ -1,6 +1,4 @@
-package javamovie.repository;
-
-import javamovie.domain.MovieSchedule;
+package javamovie.movie.domain;
 
 public class MovieScheduleRepositoryImpl implements MovieScheduleRepository {
 

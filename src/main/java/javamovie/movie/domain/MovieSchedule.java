@@ -1,6 +1,6 @@
-package javamovie.domain;
+package javamovie.movie.domain;
 
-import javamovie.exception.CannotFindSeatException;
+import javamovie.movie.exception.CannotFindSeatException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
