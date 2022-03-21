@@ -33,4 +33,8 @@ public class Seat {
 
         System.out.print(rowColumnPair.getRow() + "행" + rowColumnPair.getColumn() + "열" + "x ");
     }
+
+    public RowColumnPair rowColumnPair() {
+        return this.rowColumnPair;
+    }
 }
