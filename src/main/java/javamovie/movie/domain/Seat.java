@@ -10,6 +10,7 @@ public class Seat {
 
     public Seat(Long id, RowColumnPair rowColumnPair) {
         this.id = id;
+        this.reserveStatus = false;
         this.rowColumnPair = rowColumnPair;
     }
 
