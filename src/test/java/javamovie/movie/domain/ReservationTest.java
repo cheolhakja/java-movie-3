@@ -28,7 +28,7 @@ public class ReservationTest {
     public void 존재하지_않는_좌석_예매() {
         MovieSchedule movieSchedule = createMovieSchedule();
 
-        assertThatThrownBy(() -> movieSchedule.reserve(Integer.MAX_VALUE, 1))
+        assertThatThrownBy(() -> movieSchedule.reserve(1000, 1))
                 .isInstanceOf(CannotFindSeatException.class);
     }
 
