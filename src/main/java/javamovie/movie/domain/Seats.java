@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public class Seats {
 
+    private Long primaryKey = 0L;
     private Map<RowColumnPair, ISeat> seating = new LinkedHashMap<>();
 
     public Seats(ISeat... seats) {
@@ -16,8 +17,8 @@ public class Seats {
         }
     }
 
-    public ISeat seatToReserve(int row, int column) throws CannotFindSeatException {
-        return Optional.ofNullable(seating.get(new RowColumnPair(row, column)))
+    public ISeat seatToReserve(RowColumnPair rowColumnPair) throws CannotFindSeatException {
+        return Optional.ofNullable(seating.get(rowColumnPair))
                 .orElseThrow(() -> new CannotFindSeatException());
     }
 
@@ -27,5 +28,9 @@ public class Seats {
         if(replacedSeat == null) {
             throw new CannotFindSeatException();
         }
+    }
+
+    public void put(RowColumnPair rowColumnPair) {
+        this.seating.put(rowColumnPair, new NotReservedSeat(++primaryKey, rowColumnPair));
     }
 }
