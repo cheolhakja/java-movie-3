@@ -1,11 +1,11 @@
 package javamovie;
 
-import javamovie.controller.MovieReservationController;
+import javamovie.controller.MovieTicketBookingController;
 
 public class Main {
 
     public static void main(String[] args) {
-        MovieReservationController movieReservationController = new MovieReservationController();
-        movieReservationController.run();
+        MovieTicketBookingController movieTicketBookingController = new MovieTicketBookingController();
+        movieTicketBookingController.run();
     }
 }

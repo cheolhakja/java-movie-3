@@ -2,7 +2,7 @@ package javamovie.movie.service;
 
 import javamovie.movie.domain.MovieSchedule;
 
-public interface MovieReservationService {
+public interface MovieTicketBookingService {
 
     public boolean reserve(int row, int column);
 

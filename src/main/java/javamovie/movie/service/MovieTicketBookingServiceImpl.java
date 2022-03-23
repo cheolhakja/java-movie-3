@@ -4,9 +4,9 @@ import javamovie.movie.domain.MovieSchedule;
 import javamovie.movie.domain.MovieScheduleRepository;
 import javamovie.movie.domain.MovieScheduleRepositoryImpl;
 import javamovie.movie.exception.CannotFindSeatException;
-import javamovie.movie.exception.CannotReserveException;
+import javamovie.movie.exception.CannotBookException;
 
-public class MovieReservationServiceImpl implements MovieReservationService {
+public class MovieTicketBookingServiceImpl implements MovieTicketBookingService {
 
     private MovieScheduleRepository movieScheduleRepository = new MovieScheduleRepositoryImpl();
 
@@ -15,11 +15,11 @@ public class MovieReservationServiceImpl implements MovieReservationService {
         try {
             MovieSchedule movieSchedule = movieScheduleRepository.findSchedule(); //한줄에 점을 두개 이상 찍지 않는다
 
-            movieSchedule.reserve(row, column);
+            movieSchedule.book(row, column);
             System.out.println("예매되었습니다");
 
             return true;
-        } catch (CannotReserveException e) {
+        } catch (CannotBookException e) {
             System.out.println("이미 예매 된 좌석입니다");
             return false;
         } catch (CannotFindSeatException e) {

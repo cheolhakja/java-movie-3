@@ -1,7 +1,7 @@
 package javamovie.movie.domain;
 
 import javamovie.movie.exception.CannotFindSeatException;
-import javamovie.movie.exception.CannotReserveException;
+import javamovie.movie.exception.CannotBookException;
 
 public class MovieSchedule {
 
@@ -15,9 +15,9 @@ public class MovieSchedule {
         }
     }
 
-    public boolean reserve(int row, int column) throws CannotFindSeatException, CannotReserveException {
+    public boolean book(int row, int column) throws CannotFindSeatException, CannotBookException {
         mySeats.updateBookingStatus(new RowColumnPair(row, column),
-                mySeats.seatToReserve(new RowColumnPair(row, column)).bookingResult());
+                mySeats.seatToBook(new RowColumnPair(row, column)).bookingResult());
 
         return true;
     }

@@ -17,7 +17,7 @@ public class Seats {
         }
     }
 
-    public ISeat seatToReserve(RowColumnPair rowColumnPair) throws CannotFindSeatException {
+    public ISeat seatToBook(RowColumnPair rowColumnPair) throws CannotFindSeatException {
         return Optional.ofNullable(seating.get(rowColumnPair))
                 .orElseThrow(() -> new CannotFindSeatException());
     }
@@ -31,6 +31,6 @@ public class Seats {
     }
 
     public void put(RowColumnPair rowColumnPair) {
-        this.seating.put(rowColumnPair, new NotReservedSeat(++primaryKey, rowColumnPair));
+        this.seating.put(rowColumnPair, new NotBookedSeat(++primaryKey, rowColumnPair));
     }
 }

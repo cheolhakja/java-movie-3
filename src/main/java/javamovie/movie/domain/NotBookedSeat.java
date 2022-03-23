@@ -1,26 +1,25 @@
 package javamovie.movie.domain;
 
-import javamovie.movie.exception.CannotReserveException;
-
-public class ReservedSeat implements ISeat {
+public class NotBookedSeat implements ISeat {
 
     private final Long id;
     private final boolean reservationStatus;
     private final RowColumnPair rowColumnPair;
 
-    public ReservedSeat(Long id, RowColumnPair rowColumnPair) {
+    public NotBookedSeat(Long id, RowColumnPair rowColumnPair) {
         this.id = id;
-        this.reservationStatus = true;
+        this.reservationStatus = false;
         this.rowColumnPair = rowColumnPair;
     }
 
     @Override
-    public boolean reserve() throws CannotReserveException {
-        throw new CannotReserveException();
+    public boolean reserve() {
+        return true;
     }
 
     @Override
     public void printSeat(int previousRow) {
+
     }
 
     @Override
@@ -34,7 +33,7 @@ public class ReservedSeat implements ISeat {
     }
 
     @Override
-    public ISeat bookingResult() throws CannotReserveException {
-        throw new CannotReserveException();
+    public ISeat bookingResult() {
+        return new BookedSeat(this.id, this.rowColumnPair);
     }
 }
