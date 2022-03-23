@@ -1,47 +1,28 @@
 package javamovie.movie.domain;
 
 import javamovie.movie.exception.CannotFindSeatException;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
+import javamovie.movie.exception.CannotReserveException;
 
 public class MovieSchedule {
 
     private Movie movie;
-    private Map<RowColumnPair, Seat> seats = new LinkedHashMap<>();
+    private Seats mySeats = new Seats();
 
     public MovieSchedule(Movie movie, RowColumnPair... rowColumnPairs) {
-        Long id = 0L;
-
         this.movie = movie;
-
         for (RowColumnPair rowColumnPair : rowColumnPairs) {
-            id = id + 1L;
-            seats.put(rowColumnPair, new Seat(id, rowColumnPair));
+            mySeats.put(rowColumnPair);
         }
     }
 
-    public boolean reserve(int row, int column) throws CannotFindSeatException {
-        Seat seat = seats.get(new RowColumnPair(row, column));
+    public boolean reserve(int row, int column) throws CannotFindSeatException, CannotReserveException {
+        mySeats.updateBookingStatus(new RowColumnPair(row, column),
+                mySeats.seatToReserve(new RowColumnPair(row, column)).bookingResult());
 
-        SeatExistenceChecker.check(seat); //need refactor: seat-existence-checker
-
-        return seat.reserved();
+        return true;
     }
 
     public void printSeats() {
-        int previousSeatRow = 1;
-        int row;
 
-        for (Map.Entry<RowColumnPair,Seat> entry : seats.entrySet()) {
-            if ((row = entry.getKey().getRow()) > previousSeatRow) {
-                System.out.println();
-                previousSeatRow = row;
-            }
-
-            entry.getValue().printSeat();
-        }
-
-        System.out.println();
     }
 }
