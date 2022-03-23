@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class ReservationTest {
+public class MovieScheduleTest {
 
     //do not make shared member variable
     private MovieSchedule createMovieSchedule() {
