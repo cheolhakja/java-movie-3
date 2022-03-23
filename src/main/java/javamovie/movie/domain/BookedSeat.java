@@ -21,6 +21,11 @@ public class BookedSeat implements ISeat {
 
     @Override
     public void printSeat(int previousRow) {
+        if(previousRow < this.rowColumnPair.getRow()) {
+            System.out.println();
+        }
+
+        System.out.print(" " + this.rowColumnPair.getRow() + "행" + this.rowColumnPair.getColumn() + "열:X");
     }
 
     @Override

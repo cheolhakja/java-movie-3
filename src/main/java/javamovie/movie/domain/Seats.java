@@ -2,9 +2,7 @@ package javamovie.movie.domain;
 
 import javamovie.movie.exception.CannotFindSeatException;
 
-import java.util.Map;
-import java.util.LinkedHashMap;
-import java.util.Optional;
+import java.util.*;
 
 public class Seats {
 
@@ -32,5 +30,9 @@ public class Seats {
 
     public void put(RowColumnPair rowColumnPair) {
         this.seating.put(rowColumnPair, new NotBookedSeat(++primaryKey, rowColumnPair));
+    }
+
+    public List<ISeat> mapToList() {
+        return new ArrayList<ISeat>(seating.values());
     }
 }

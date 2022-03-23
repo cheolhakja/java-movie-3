@@ -23,6 +23,13 @@ public class MovieSchedule {
     }
 
     public void printSeats() {
+        int previousRow = 1;
 
+        for (ISeat seat : mySeats.mapToList()) {
+            seat.printSeat(previousRow);
+            previousRow = seat.rowColumnPair().getRow();
+        }
+
+        System.out.println();
     }
 }
