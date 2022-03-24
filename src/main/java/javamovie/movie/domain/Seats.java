@@ -15,7 +15,7 @@ public class Seats {
         }
     }
 
-    public ISeat seatToBook(RowColumnPair rowColumnPair) throws CannotFindSeatException {
+    public ISeat seat(RowColumnPair rowColumnPair) throws CannotFindSeatException {
         return Optional.ofNullable(seating.get(rowColumnPair))
                 .orElseThrow(() -> new CannotFindSeatException());
     }

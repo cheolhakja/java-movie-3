@@ -19,7 +19,7 @@ public class SeatsTest {
                 new NotBookedSeat(3L, new RowColumnPair(1,3))
         );
 
-        assertThatThrownBy(() -> seats.seatToBook(new RowColumnPair(1000, 1000)))
+        assertThatThrownBy(() -> seats.seat(new RowColumnPair(1000, 1000)))
                 .isInstanceOf(CannotFindSeatException.class)
                 .hasMessageContaining("좌석을 찾을 수 없습니다");
     }
@@ -32,6 +32,6 @@ public class SeatsTest {
                 new NotBookedSeat(3L, new RowColumnPair(1,3))
         );
 
-        assertThat(seats.seatToBook(new RowColumnPair(1,1))).isInstanceOf(NotBookedSeat.class);
+        assertThat(seats.seat(new RowColumnPair(1,1))).isInstanceOf(NotBookedSeat.class);
     }
 }
