@@ -1,4 +1,4 @@
-package javamovie.view;
+package javamovie.io;
 
 public interface Input {
 

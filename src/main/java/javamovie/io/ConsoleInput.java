@@ -1,4 +1,4 @@
-package javamovie.view;
+package javamovie.io;
 
 import java.util.Scanner;
 

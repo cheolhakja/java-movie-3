@@ -1,4 +1,4 @@
-package javamovie.view;
+package javamovie.io;
 
 public class HardcodingInput implements Input {
     //always return constant
