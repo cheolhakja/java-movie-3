@@ -42,4 +42,9 @@ public class BookedSeat implements ISeat {
     public ISeat bookingResult() throws CannotBookException {
         throw new CannotBookException();
     }
+
+    @Override
+    public ISeat cancelingResult() {
+        return new NotBookedSeat(this.id, this.rowColumnPair);
+    }
 }

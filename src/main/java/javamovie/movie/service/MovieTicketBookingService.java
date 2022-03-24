@@ -9,4 +9,6 @@ public interface MovieTicketBookingService {
     public void addSchedule(MovieSchedule movieSchedule);
 
     public void printSeats();
+
+    public void cancel(int row, int column);
 }

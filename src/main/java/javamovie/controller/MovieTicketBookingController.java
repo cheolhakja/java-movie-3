@@ -5,10 +5,13 @@ import javamovie.movie.domain.MovieSchedule;
 import javamovie.movie.domain.RowColumnPair;
 import javamovie.movie.service.MovieTicketBookingService;
 import javamovie.movie.service.MovieTicketBookingServiceImpl;
-import javamovie.view.ConsoleInput;
-import javamovie.view.Input;
+import javamovie.io.ConsoleInput;
+import javamovie.io.Input;
 
 public class MovieTicketBookingController {
+
+    private int row;
+    private int column;
 
     public void run() {
         Input input = new ConsoleInput();
@@ -30,12 +33,15 @@ public class MovieTicketBookingController {
             switch (menu) {
                 case 1:
                     movieTicketBookingService.printSeats();
-                    int row = input.inputRow();
-                    int column = input.inputColumn();
+                    this.row = input.inputRow();
+                    this.column = input.inputColumn();
                     movieTicketBookingService.reserve(row, column);
                     break;
                 case 2:
-                    System.out.println("2"); //feat: 예매 취소 기능 구현
+                    movieTicketBookingService.printSeats();
+                    this.row = input.inputRow();
+                    this.column = input.inputColumn();
+                    movieTicketBookingService.cancel(row, column);
                     break;
                 default:
                     throw new IllegalArgumentException(); //나올 수 없는 메뉴 입력값

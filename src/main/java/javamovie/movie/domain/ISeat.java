@@ -11,4 +11,6 @@ public interface ISeat {
     public Long seatId();
 
     public ISeat bookingResult();
+
+    public ISeat cancelingResult();
 }

@@ -17,12 +17,14 @@ public class MovieSchedule {
 
     public boolean book(int row, int column) throws CannotFindSeatException, CannotBookException {
         mySeats.updateBookingStatus(new RowColumnPair(row, column),
-                mySeats.seatToBook(new RowColumnPair(row, column)).bookingResult());
+                mySeats.seat(new RowColumnPair(row, column)).bookingResult());
 
         return true;
     }
 
     public void printSeats() {
+        System.out.println("예매 현황입니다");
+
         int previousRow = 1;
 
         for (ISeat seat : mySeats.mapToList()) {
@@ -31,5 +33,9 @@ public class MovieSchedule {
         }
 
         System.out.println();
+    }
+
+    public void cancel(int row, int column) {
+        mySeats.updateBookingStatus(new RowColumnPair(row, column), mySeats.seat(new RowColumnPair(row, column)).cancelingResult());
     }
 }

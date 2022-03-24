@@ -1,5 +1,7 @@
 package javamovie.movie.domain;
 
+import javamovie.movie.exception.CannotCancelException;
+
 public class NotBookedSeat implements ISeat {
 
     private final Long id;
@@ -39,5 +41,10 @@ public class NotBookedSeat implements ISeat {
     @Override
     public ISeat bookingResult() {
         return new BookedSeat(this.id, this.rowColumnPair);
+    }
+
+    @Override
+    public ISeat cancelingResult() throws CannotCancelException {
+        throw new CannotCancelException();
     }
 }
