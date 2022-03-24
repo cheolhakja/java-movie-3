@@ -1,7 +1,9 @@
 package javamovie.movie.domain;
 
+import javamovie.movie.exception.CannotCancelException;
 import javamovie.movie.exception.CannotFindSeatException;
 import javamovie.movie.exception.CannotBookException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -39,5 +41,27 @@ public class MovieScheduleTest {
 
         assertThatThrownBy(() -> movieSchedule.book(1, 1))
                 .isInstanceOf(CannotBookException.class);
+    }
+
+    @Test
+    public void 예매된_좌석_취소() {
+        MovieSchedule movieSchedule = createMovieSchedule();
+        movieSchedule.book(1,1);
+
+        movieSchedule.cancel(1,1);
+    }
+
+    @Test
+    public void 예매되지_않은_좌석_취소() {
+        MovieSchedule movieSchedule = createMovieSchedule();
+
+        Assertions.assertThrows(CannotCancelException.class, () -> movieSchedule.cancel(1,1));
+    }
+
+    @Test
+    public void 존재하지_않은_좌석_취소() {
+        MovieSchedule movieSchedule = createMovieSchedule();
+
+        Assertions.assertThrows(CannotFindSeatException.class, () -> movieSchedule.cancel(100,100));
     }
 }
