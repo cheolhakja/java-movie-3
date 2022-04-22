@@ -40,12 +40,49 @@ public class MovieStatisticsRepositoryLocal implements IMovieStastisticsReposito
         return seatAndNumberOfBooking.mostBookedSeatPerMovie(numberOfData);
     }
 
-    @EqualsAndHashCode
-    private class SeatAndMovieData {
+    public HashMap<RowColumnPair, Integer> mostBookedSeat() {
         /*
-        좌석별 통계: 영화별 예매횟수
+        가장 많이 예매된 좌석 TOP3
          */
+        HashMap<RowColumnPair, Integer> seatStatistics = new HashMap<>();
 
+        for (IMovieStatistics movieStatistics: movieStatisticsList) {
+            if(seatStatistics.containsKey(movieStatistics.getRowColumn())) {
+                Integer integer = seatStatistics.get(movieStatistics.getRowColumn());
+                seatStatistics.replace(movieStatistics.getRowColumn(), integer+1);
+                continue;
+            }
+
+            seatStatistics.put(movieStatistics.getRowColumn(), 1);
+        }
+
+        return sortDescendingForTOP3Seat(seatStatistics);
+
+        /*
+        Map.Entry<RowColumnPair, Integer> firstEntry = rowColumnPairIntegerHashMap.entrySet().stream().findFirst().get();
+        Map.Entry<RowColumnPair, Integer> secondEntry = rowColumnPairIntegerHashMap.entrySet().stream().skip(1L).findFirst().get();
+        Map.Entry<RowColumnPair, Integer> thirdEntry = rowColumnPairIntegerHashMap.entrySet().stream().skip(2L).findFirst().get();
+
+         */
+    }
+
+    private HashMap<RowColumnPair, Integer> sortDescendingForTOP3Seat(HashMap<RowColumnPair, Integer> hm) {
+        List<Map.Entry<RowColumnPair, Integer>> list = new LinkedList<>(hm.entrySet());
+
+        Collections.sort(list, new Comparator<Map.Entry<RowColumnPair, Integer> >() {
+            public int compare(Map.Entry<RowColumnPair, Integer> o1,
+                               Map.Entry<RowColumnPair, Integer> o2)
+            {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+        HashMap<RowColumnPair, Integer> temp = new LinkedHashMap<RowColumnPair, Integer>();
+
+        for (Map.Entry<RowColumnPair, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
     }
 
     private class SeatStatisticsPerMovie {
