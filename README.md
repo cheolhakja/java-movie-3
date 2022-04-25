@@ -22,3 +22,4 @@
 * 절차지향 vs 객체지향
     * for문이나 if문을 객체로 표현하는 방법
 * getter를 사용해도 될까요?
+* new branch: spring IoC(DI)
