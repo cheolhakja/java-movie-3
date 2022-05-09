@@ -2,7 +2,6 @@ package javamovie.statistics.domain;
 
 import javamovie.movie.domain.Movie;
 import javamovie.movie.domain.RowColumnPair;
-import lombok.EqualsAndHashCode;
 
 import java.util.*;
 
