@@ -23,4 +23,4 @@
 * 절차지향 vs 객체지향
     * for문이나 if문을 객체로 표현하는 방법
 * getter를 사용해도 될까요?
-* `movie/src/main/java/javamovie` 의존관계에 있는 객체들을 스프링 컨테이너로부터 주입받기 
+* new branch: spring IoC(DI)
