@@ -2,18 +2,22 @@ package javamovie.controller;
 
 import javamovie.movie.domain.*;
 import javamovie.movie.service.MovieTicketBookingService;
-import javamovie.movie.service.MovieTicketBookingServiceImpl;
 import javamovie.io.ConsoleInput;
 import javamovie.io.Input;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class MovieTicketBookingController {
 
     private int row;
     private int column;
 
+    @Autowired
+    private MovieTicketBookingService movieTicketBookingService;
+
     public void run() {
         Input input = new ConsoleInput();
-        MovieTicketBookingService movieTicketBookingService = new MovieTicketBookingServiceImpl();
         IMovieRepository movieRepository = new MovieRepository();
 
         RowColumnPair A1 = new RowColumnPair(1, 1);
