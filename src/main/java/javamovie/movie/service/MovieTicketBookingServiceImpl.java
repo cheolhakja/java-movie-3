@@ -1,15 +1,25 @@
 package javamovie.movie.service;
 
-import javamovie.movie.domain.MovieSchedule;
-import javamovie.movie.domain.MovieScheduleRepository;
-import javamovie.movie.domain.MovieScheduleRepositoryImpl;
+import javamovie.movie.domain.*;
 import javamovie.movie.exception.CannotCancelException;
 import javamovie.movie.exception.CannotFindSeatException;
 import javamovie.movie.exception.CannotBookException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MovieTicketBookingServiceImpl implements MovieTicketBookingService {
 
     private MovieScheduleRepository movieScheduleRepository = new MovieScheduleRepositoryImpl();
+
+    private IMovieRepository movieRepository = new MovieRepository();
+
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
+
+    public MovieTicketBookingServiceImpl() {
+    }
 
     @Override
     public boolean reserve(int row, int column) {
@@ -18,6 +28,9 @@ public class MovieTicketBookingServiceImpl implements MovieTicketBookingService 
 
             movieSchedule.book(row, column);
             System.out.println("예매되었습니다");
+
+            applicationEventPublisher.publishEvent(new EventAddStatistics(this,
+                    new RowColumnPair(row, column), movieSchedule));
 
             return true;
         } catch (CannotBookException e) {

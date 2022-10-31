@@ -1,21 +1,24 @@
 package javamovie.controller;
 
-import javamovie.movie.domain.Movie;
-import javamovie.movie.domain.MovieSchedule;
-import javamovie.movie.domain.RowColumnPair;
+import javamovie.movie.domain.*;
 import javamovie.movie.service.MovieTicketBookingService;
-import javamovie.movie.service.MovieTicketBookingServiceImpl;
 import javamovie.io.ConsoleInput;
 import javamovie.io.Input;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class MovieTicketBookingController {
 
     private int row;
     private int column;
 
+    @Autowired
+    private MovieTicketBookingService movieTicketBookingService;
+
     public void run() {
         Input input = new ConsoleInput();
-        MovieTicketBookingService movieTicketBookingService = new MovieTicketBookingServiceImpl();
+        IMovieRepository movieRepository = new MovieRepository();
 
         RowColumnPair A1 = new RowColumnPair(1, 1);
         RowColumnPair A2 = new RowColumnPair(1, 2);
@@ -25,7 +28,11 @@ public class MovieTicketBookingController {
         RowColumnPair B2 = new RowColumnPair(2, 2);
         RowColumnPair B3 = new RowColumnPair(2, 3);
         RowColumnPair C2 = new RowColumnPair(3, 2);
-        movieTicketBookingService.addSchedule(new MovieSchedule(new Movie(1L),
+
+        Movie spiderMan = new Movie(1L);
+
+        movieRepository.add(spiderMan);
+        movieTicketBookingService.addSchedule(new MovieSchedule(spiderMan,
                 A1, A2, A3, A4, B1, B2, B3, C2)); //객체들을 생성하는 책임을 main이 갖고 객체를 주입받을까?
 
         while(true) {

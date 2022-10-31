@@ -38,4 +38,8 @@ public class MovieSchedule {
     public void cancel(int row, int column) {
         mySeats.updateBookingStatus(new RowColumnPair(row, column), mySeats.seat(new RowColumnPair(row, column)).cancelingResult());
     }
+
+    public boolean equalMovie(Movie movie) {
+        return this.movie.equals(movie);
+    }
 }
